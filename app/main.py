@@ -175,7 +175,7 @@ async def predict_batch(data:InputDatas):
 
         return output_data
 
-    # except Exception as e:
+    except Exception as e:
         raise HTTPException(status_code=500, detail=f"prediction error: {str(e)}")
 
 # API endpoint for uploading a JSON file
