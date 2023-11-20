@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the image name
-IMAGE_NAME="pytestimage2"
+IMAGE_NAME="glm-fast-api:1.0"
 
 # Define port mappings (host_port:container_port)
 PORTS="1313:80"
