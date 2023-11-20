@@ -7,3 +7,7 @@ fastapi[all]==0.88.0
 bokeh==2.4.2
 statsmodels==0.12.2
 pytest==7.1.1
+pytest-asyncio==0.21.1
+pytest-xdist==3.1.0
+httpx==0.23.3
+locust
