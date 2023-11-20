@@ -36,7 +36,8 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
       - From the project directory, build the container with tag `docker build -t glm-fast-api:1.0 .`
       - Make sure the script has execute permissions by running `chmod +x run_api.sh`.
       - Run the scipt to run the container by typing `./run_api.sh 1313:80`, you will see the api server started, you can access the server document at `http://localhost:1313/docs`
-![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/85ef40ac-b938-48a6-ac2f-5849c982a01c)
+![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/d217a7e9-2994-4274-9325-840bcb33f42c)
+
 
 4. **Orchestration:**
    - Orchestration using Docker compose
