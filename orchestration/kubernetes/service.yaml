@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-service
+spec:
+  selector:
+    app: fastapi-deployment  # Match the labels in your deployment
+  ports:
+    - protocol: TCP
+      port: 80  # Port on which the service is exposed
+      targetPort: 1313  # Port on which the FastAPI application is running
+  type: LoadBalancer  # Change to ClusterIP or NodePort based on your requirements

@@ -1,18 +1,21 @@
-import pandas as pd
-import pickle
-from fastapi import FastAPI, HTTPException, File, UploadFile
-from pydantic import BaseModel
-from model.model_utils import transform_and_select_features, selected_features
-from typing import Optional
-from fastapi.encoders import jsonable_encoder
 import json
+import pickle
+from typing import Optional
+
+import pandas as pd
+from fastapi import FastAPI, HTTPException, File, UploadFile
+from fastapi.encoders import jsonable_encoder
+from pydantic import BaseModel
+
+from model.model_utils import transform_and_select_features, selected_features
 
 # Load the pre-trained model
-with open('model/model.pkl', 'rb') as file:
+with open('../model/model.pkl', 'rb') as file:
     model = pickle.load(file)
 
 # Define FastAPI app
 app = FastAPI()
+
 
 class Data(BaseModel):
     x0: Optional[float]
@@ -116,39 +119,33 @@ class Data(BaseModel):
     x98: Optional[float]
     x99: Optional[float]
 
+
 class InputData(BaseModel):
-    data : Data
+    data: Data
+
+
 class InputDatas(BaseModel):
-    data : list[Data]
+    data: list[Data]
+
 
 # API endpoint for prediction
 @app.post("/predict")
-async def predict_batch(data:InputDatas):
-    # print('data_type'. type(data))
+async def predict_batch(data: InputDatas):
     try:
         batch_size = 1000  # Set your desired batch size
 
         # Process data in batches
         predictions_list = []
-        print('datatype',type(data))
+        print('datatype', type(data))
         for start in range(0, len(data.data), batch_size):
             end = start + batch_size
-            # print('data_type', type(data.data))
             batch_data = data.data[start:end]
-
-            # print('data.data',data.data)
-            # print('input data to dataframe ... ')
 
             # Convert batch_data to DataFrame
             batch_df = pd.DataFrame(jsonable_encoder(batch_data))
 
-            # print('ip',input_data.head())
-            # print('input data transforming ...')
-
             # Apply data transformation and feature selection
             transformed_data = transform_and_select_features(batch_df)
-            
-            # print('input data transform done\n',transformed_data )
 
             # Create a DataFrame with all values set to 0 for selected features
             zero_df = pd.DataFrame(0, index=transformed_data.index, columns=list(selected_features))
@@ -178,6 +175,7 @@ async def predict_batch(data:InputDatas):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"prediction error: {str(e)}")
 
+
 # API endpoint for uploading a JSON file
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile = File(...)):
@@ -187,11 +185,9 @@ async def create_upload_file(file: UploadFile = File(...)):
         json_content = json.loads(content)
         # # Construct an instance of InputDatas
         input_data = InputDatas(**json_content)
-        
-        # print(type(input_data))
         # Call the batch prediction endpoint with the uploaded data
         result = await predict_batch(input_data)
-        # print('result', result)
+
         return result
 
     except Exception as e:

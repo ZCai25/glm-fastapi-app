@@ -1,0 +1,22 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  DOCKER_IMAGE_TAG: 1.0
+
+before_script:
+  - export CONTAINER_IMAGE_NAME=jimmycai909/glm-fast-api-docker
+
+build:
+  stage: build
+  script:
+    - docker build -t $CONTAINER_IMAGE_NAME:$DOCKER_IMAGE_TAG .
+    - docker push $CONTAINER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+
+deploy:
+  stage: deploy
+  script:
+    - kubectl apply -f kubernetes/fastapi-deployment.yaml
+  only:
+    - master
