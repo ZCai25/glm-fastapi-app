@@ -14,6 +14,12 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
 - `gitlab-ci.yml`: GitLab CI/CD pipeline configuration file.
 - `README.md`: This documentation file.
 
+## Getting Started
+
+1. Clone this repository: `git clone https://github.com/ZCai25/glm-fastapi-app.git`
+2. Navigate to the project directory: `cd glm-fastapi-app`
+3. Follow the instructions in each directory to deploy the GLM model locally or in a Kubernetes cluster.
+
 ## End-to-End Process
 
 1. **FastAPI Application:**
@@ -29,28 +35,36 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
    - Docker image is built using the `docker build` command, then you can build by running the `run_api.sh`
       - From the project directory, build the container with tag `docker build -t glm-fast-api:1.0 .`
       - Make sure the script has execute permissions by running `chmod +x run_api.sh`.
-      - Run the scipt to run the container by typing `./run_api.sh 1313:80`, you will see the api server started
+      - Run the scipt to run the container by typing `./run_api.sh 1313:80`, you will see the api server started, you can access the server document at `http://localhost:1313/docs`
 ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/85ef40ac-b938-48a6-ac2f-5849c982a01c)
 
-4. **Kubernetes Orchestration:**
-   - Kubernetes deployment YAML (`kubernetes/deployment.yml`) defines how the FastAPI application should run as pods.
-   - Kubernetes service YAML (`kubernetes/service.yml`) exposes the application within the cluster.
+4. **Orchestration:**
+   - Orchestration using Docker compose
+      - From the project directory, run `docker-compose up` and you will see the api server up and running like the previous image.
+      - Run `docker-compose down` to stop the service
+   - Orestration Using Kubernetes
+      - Kubernetes deployment YAML (`kubernetes/deployment.yml`) defines how the FastAPI application should run as pods.
+      - Kubernetes service YAML (`kubernetes/service.yml`) exposes the application within the cluster.
+      - To start the orchestration process locally, start minikube by running `minikube start`
+      - Check list deployment runing `kubectl get deployments`
+      - Check pod by runing `kubectl get pod`
+      - Check services by running `kubectl get services`
+      - Here is a example of the output of the above command, you can see we create 3 replica in the pod and we deploy them as load balancer to handle large amount of requests
+      - ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/740a0108-95a5-4829-98b6-10ce61bd10c2)
 
-5. **GitLab CI/CD Pipeline:**
+
+6. **GitLab CI/CD Pipeline:**
    - `.gitlab-ci.yml` contains the CI/CD pipeline configuration.
    - The pipeline includes stages for linting, testing, building the Docker image, and deploying to Kubernetes.
+   - To use this CI/CD configuration, make sure you have GitLab CI/CD configured for your repository, and the necessary variables (e.g., Docker registry credentials) are set in your GitLab project settings.
 
-6. **CI/CD Workflow:**
+   - When you push changes to the master branch, GitLab CI/CD will automatically trigger the pipeline, and it will execute the defined stages. The Docker image will be built, pushed to the registry, and then the application will be deployed to Kubernetes.
+
+7. **CI/CD Workflow:**
    - Code changes trigger the GitLab CI/CD pipeline.
    - Automated testing ensures code quality.
    - Docker image is built and pushed to the container registry.
    - Kubernetes deployment is updated with the new image.
-
-## Getting Started
-
-1. Clone this repository: `git clone https://github.com/ZCai25/glm-fastapi-app.git`
-2. Navigate to the project directory: `cd glm-fastapi-app`
-3. Follow the instructions in each directory to deploy the GLM model locally or in a Kubernetes cluster.
 
 ## Notes
 
