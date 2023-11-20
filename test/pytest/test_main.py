@@ -1,6 +1,18 @@
 import json
 from fastapi.testclient import TestClient
-from main import app
+
+import os
+import sys
+
+# Get the current script's directory
+current_script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Add the project directory to sys.path
+project_dir = os.path.abspath(os.path.join(current_script_dir, '../..'))
+sys.path.append(project_dir)
+
+# Now you can use an absolute import
+from app.main import app
 
 client = TestClient(app)
 
@@ -346,7 +358,7 @@ def test_upload_file_and_predict():
     client = TestClient(app)
 
     # Prepare a sample JSON file content
-    with open('output_4.json', 'r') as f:
+    with open('test_input.json', 'r') as f:
         json_content = json.load(f)
 
     # Convert the JSON content to a string

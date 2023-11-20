@@ -2,15 +2,31 @@ import json
 import pickle
 from typing import Optional
 
+import os
+import sys
+
 import pandas as pd
 from fastapi import FastAPI, HTTPException, File, UploadFile
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 
-from model.model_utils import transform_and_select_features, selected_features
+# Get the current script's directory
+current_script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Add the project directory to sys.path
+project_dir = os.path.abspath(os.path.join(current_script_dir, '../..'))
+sys.path.append(project_dir)
+
+from app.model.model_utils import transform_and_select_features, selected_features
+
+# Get the current script's directory
+current_script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the absolute path to the model file
+model_file_path = os.path.join(current_script_dir, 'model', 'model.pkl')
 
 # Load the pre-trained model
-with open('../model/model.pkl', 'rb') as file:
+with open(model_file_path, 'rb') as file:
     model = pickle.load(file)
 
 # Define FastAPI app

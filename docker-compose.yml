@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  # FastAPI application
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "1313:80"  # Adjust the port as needed
+    environment:
+      - UVICORN_CMD="uvicorn main:app --host 0.0.0.0 --port 80 --reload"

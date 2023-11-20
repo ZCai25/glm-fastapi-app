@@ -12,7 +12,7 @@ print('API_URL',API_URL)
 async def test_performance():
     print('API_URL',API_URL)
     # Prepare sample data for testing
-    with open('output_4.json', 'r') as f:
+    with open('test_input.json', 'r') as f:
         sample_data = json.load(f)
 
     # Number of requests to simulate
