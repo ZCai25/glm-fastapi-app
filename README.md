@@ -7,7 +7,7 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
 ## Project Structure
 
 - `app/`: Contains the FastAPI application code.
-- `model/`: Holds the pre-trained GLM model (pickle file).
+- `app/model/`: Holds the pre-trained GLM model (pickle file).
 - `docker/`: Contains Dockerfile for building the Docker image.
 - `kubernetes/`: Includes Kubernetes deployment and service YAML files.
 - `tests/`: Holds unit tests for the FastAPI application.
@@ -26,7 +26,11 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
 
 3. **Docker Containerization:**
    - The Dockerfile (`docker/Dockerfile`) specifies the environment and dependencies for running the FastAPI application.
-   - Docker image is built using the `docker build` command.
+   - Docker image is built using the `docker build` command, then you can build by running the `run_api.sh`
+      - From the project directory, build the container with tag `docker build -t glm-fast-api:1.0 .`
+      - Make sure the script has execute permissions by running `chmod +x run_api.sh`.
+      - Run the scipt to run the container by typing `./run_api.sh 1313:80`, you will see the api server started
+![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/85ef40ac-b938-48a6-ac2f-5849c982a01c)
 
 4. **Kubernetes Orchestration:**
    - Kubernetes deployment YAML (`kubernetes/deployment.yml`) defines how the FastAPI application should run as pods.
@@ -44,8 +48,8 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
 
 ## Getting Started
 
-1. Clone this repository: `git clone https://github.com/yourusername/glm-model-deployment.git`
-2. Navigate to the project directory: `cd glm-model-deployment`
+1. Clone this repository: `git clone https://github.com/ZCai25/glm-fastapi-app.git`
+2. Navigate to the project directory: `cd glm-fastapi-app`
 3. Follow the instructions in each directory to deploy the GLM model locally or in a Kubernetes cluster.
 
 ## Notes
