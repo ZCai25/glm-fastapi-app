@@ -49,7 +49,7 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
       - Check list deployment runing `kubectl get deployments`
       - Check pod by runing `kubectl get pod`
       - Check services by running `kubectl get services`
-      - Here is a example of the output of the above command, you can see we create 3 replica in the pod and we deploy them as load balancer to handle large amount of requests
+      - Here is a example of the output of the above commands, you can see we create 3 replica in the pod and we deploy them as load balancer to handle large amount of requests
       - ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/740a0108-95a5-4829-98b6-10ce61bd10c2)
 
 
