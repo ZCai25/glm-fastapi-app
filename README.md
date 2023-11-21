@@ -128,11 +128,11 @@ $ cd glm-fastapi-app
       - You can see that for each deployment, there are 3 replicas as load balancers, which we can test out the performance later
       - To expose the Kubernetes service deployment named 'fastapi-deployment', we can run
         ```console
-        $ kubectl expose deploy/fastapi-deployment --name=fast-service --target-port=80 --port 1313
+        $ kubectl expose deploy/fastapi-deployment --name=fast-service-1 --target-port=80 --port 1313
         ```
       - to perform port forwarding and test out the service run
         ```console
-        $ minikube service fast-service
+        $ minikube service fast-service-1
         ```
         then you can test the service from the pop-up window.
 
