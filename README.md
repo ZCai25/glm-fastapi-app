@@ -37,27 +37,7 @@ $ cd glm-fastapi-app
 3. Follow the instructions in each directory to deploy the GLM model locally or in a Kubernetes cluster.
 
 ## End-to-End Process
-
-1. **FastAPI Application:**
-   - The FastAPI application (`app/main.py`) defines API endpoints for model prediction.
-   - Input data is received via HTTP requests and passed to the pre-trained GLM model.
-   - To start the FastAPI server locally, change the directory to `app` and run
-     ```console
-     $ uvicorn main:app --reload
-     ```
-   - open [FastAPI Swagger UI](http://localhost:1313/docs) in a browser, which provides interactive API documentation and exploration of web user interfaces.
-   - Click "Try it out" at POST/predict and you can test out the model predictions by copying the data from test/test_output.json and pasting the data to the request body, or uploading a file at POST/uploadfile. You can test the output without typing the curl command manually
-   ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/5220d4e6-2386-4e29-9f71-47df2f951ae3)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/85414d90-f175-4260-abfd-1d15dd083370)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/d2b66cf2-c7eb-4a0d-9903-f61d7fda54f9)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/a6060d12-21e0-457b-9d86-93ece07015a1)
-
-
-
-
-   - Check out the documentation at [Swagger UI Docs](https://fastapi.tiangolo.com/features/)
-2. **Model Loading:**
-   - The pre-trained GLM model is stored in the `model.pkl` under `model/` directory.
-   - The model is loaded during the FastAPI application startup.
-
-3. **Docker Containerization:**
+1. **Docker Containerization:**
    - The Dockerfile (`Dockerfile`) specifies the environment and dependencies for running the FastAPI application.
    - Docker image is built using the `docker build` command, then you can build by running the `run_api.sh`
       - From the project directory, build the container with a tag 1.0
@@ -75,6 +55,26 @@ $ cd glm-fastapi-app
         you will see the API server started, you can access the server document at (http://localhost:1313/docs)
 ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/d217a7e9-2994-4274-9325-840bcb33f42c)
 
+
+2. **Model Loading:**
+   - The pre-trained GLM model is stored in the `model.pkl` under `model/` directory.
+   - The model is loaded during the FastAPI application startup.
+
+3. **FastAPI Application:**
+   - The FastAPI application (`app/main.py`) defines API endpoints for model prediction.
+   - Input data is received via HTTP requests and passed to the pre-trained GLM model.
+   - To start the FastAPI server locally, change the directory to `app` and run
+     ```console
+     $ uvicorn main:app --reload
+     ```
+   - open [FastAPI Swagger UI](http://localhost:1313/docs) in a browser, which provides interactive API documentation and exploration of web user interfaces.
+   - Click "Try it out" at POST/predict and you can test out the model predictions by copying the data from test/test_output.json and pasting the data to the request body, or uploading a file at POST/uploadfile. You can test the output without typing the curl command manually
+   ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/5220d4e6-2386-4e29-9f71-47df2f951ae3)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/85414d90-f175-4260-abfd-1d15dd083370)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/d2b66cf2-c7eb-4a0d-9903-f61d7fda54f9)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/a6060d12-21e0-457b-9d86-93ece07015a1)
+
+
+
+
+   - Check out the documentation at [Swagger UI Docs](https://fastapi.tiangolo.com/features/)
 
 4. **Orchestration:**
    - Orchestration using Docker compose
@@ -165,7 +165,7 @@ $ cd glm-fastapi-app
 
      - 10000 users with 10 user requests per sec in 60 sec using 3 API replicas
      ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/6737ab74-6c2c-4a26-bca7-490acdb0fc75)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/913018c9-727f-41e9-a69c-65d3ef3ceb40)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/6f4d1321-2fef-493e-b844-ffe33dfe1d6b)
-   - We can see that using 3 replicas balance the load for large amounts of request there for total request per second is lower. When the number of request per sec increase to 100, a single api port cannot process them effectively and return error, while the 3 replicas and process them. This is an example of testing a api performance test.
+   - We can see that using 3 replicas balance the load for large amounts of request there for total request per second is lower. However, when the number of request per sec increase to 100, a single api port cannot process them effectively and return error, while the 3 replicas and process them. This is an example of performing API performance test.
   
 ## Opportunities For Scalability
 1. Using Scalable Architecture
