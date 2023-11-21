@@ -3,7 +3,7 @@
 ## Overview and project goal
 The purpose of this project is to deploy a "segmentation" model for the marketing department. The outcome of the model prediction is whether a customer purchased a product(y=1) or not (y=0). By deploying this model, we can help the marketing department decide which customers receive an advertisement for the product.
 
-This project demonstrates the deployment of a Generalized Linear Model (GLM) using the FastAPI framework, Docker containers, Kubernetes orchestration, and GitLab for Continuous Integration/Continuous Deployment (CI/CD). The GLM model serves as a web API, providing predictions based on input data. In the end, we also discuss the performance testing to identify bottlenecks, and various options to outcome it.
+This project demonstrates the deployment of a Generalized Linear Model (GLM) using the FastAPI framework, Docker containers, Kubernetes orchestration, and GitLab for Continuous Integration/Continuous Deployment (CI/CD). The GLM model serves as a web API, providing predictions based on input data. In the end, we also discuss the performance testing to identify bottlenecks, and various options to overcome it.
 
 
 ## Prerequisites
