@@ -45,7 +45,7 @@ $ cd glm-fastapi-app
 
    - Check out the documenation at [Swagger UI Docs](https://fastapi.tiangolo.com/features/)
 2. **Model Loading:**
-   - The pre-trained GLM model is stored in the `model/` directory.
+   - The pre-trained GLM model is stored in the `model.pkl` under `model/` directory.
    - The model is loaded during the FastAPI application startup.
 
 3. **Docker Containerization:**
