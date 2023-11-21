@@ -8,10 +8,10 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
 
 - `app/`: Contains the FastAPI application code.
 - `app/model/`: Holds the pre-trained GLM model (pickle file).
-- `docker/`: Contains Dockerfile for building the Docker image.
 - `kubernetes/`: Includes Kubernetes deployment and service YAML files.
 - `tests/`: Holds unit tests for the FastAPI application.
 - `gitlab-ci.yml`: GitLab CI/CD pipeline configuration file.
+- `output/output_test.json`: prediction output of 10000 rows of test data
 - `README.md`: This documentation file.
 
 ## Getting Started
@@ -108,6 +108,11 @@ $ cd glm-fastapi-app
         ```
       - Here is a example of the output of the above commands, you can see we create 3 replica in the pod and we deploy them as load balancer to handle large amount of requests ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/cd0981e3-e522-4d03-a4a3-5f3cb768d301)
       - You can see that for each deployment, there are 3 replicas as load balancer, which we can test out the performance laster
+      - To expose the kubernetes service deployment named 'fastapi-deployment', we can run
+        ```console
+        $ kubectl expose deploy/fastapi-deployment --name=fast-service-90 --target-port=80 --port 1313
+        ```
+        then run 
 
 
 
