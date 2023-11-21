@@ -119,7 +119,12 @@ $ cd glm-fastapi-app
         ```console
         $ kubectl get services
         ```
-      - Here is an example of the output of the above commands, you can see we created 3 replicas in the pod. We deployed them as load balancers to handle large amounts of requests ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/cd0981e3-e522-4d03-a4a3-5f3cb768d301)
+      - To get all the above items, simply run
+        ```console
+        $ kubectl get all 
+        ```
+      - Here is an example of the output of the above commands, you can see we created 3 replicas in the pod. We deployed them as load balancers to handle large amounts of requests ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/93d1f03c-becb-4742-a07a-204240a91d81)
+
       - You can see that for each deployment, there are 3 replicas as load balancers, which we can test out the performance later
       - To expose the Kubernetes service deployment named 'fastapi-deployment', we can run
         ```console
