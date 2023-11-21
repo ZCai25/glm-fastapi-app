@@ -16,8 +16,15 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
 
 ## Getting Started
 
-1. Clone this repository: `git clone https://github.com/ZCai25/glm-fastapi-app.git`
-2. Navigate to the project directory: `cd glm-fastapi-app`
+1. Clone this repository:
+```console
+$ git clone https://github.com/ZCai25/glm-fastapi-app.git
+```
+   
+2. Navigate to the project directory:
+```console
+$ cd glm-fastapi-app
+```
 3. Follow the instructions in each directory to deploy the GLM model locally or in a Kubernetes cluster.
 
 ## End-to-End Process
@@ -25,6 +32,10 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
 1. **FastAPI Application:**
    - The FastAPI application (`app/main.py`) defines API endpoints for model prediction.
    - Input data is received via HTTP requests and passed to the pre-trained GLM model.
+   - To start the FastAPI server locally, change directory to app and run
+     ```console
+     $ uvicorn main:app --reload
+     ```
 
 2. **Model Loading:**
    - The pre-trained GLM model is stored in the `model/` directory.
@@ -33,15 +44,32 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
 3. **Docker Containerization:**
    - The Dockerfile (`docker/Dockerfile`) specifies the environment and dependencies for running the FastAPI application.
    - Docker image is built using the `docker build` command, then you can build by running the `run_api.sh`
-      - From the project directory, build the container with tag `docker build -t glm-fast-api:1.0 .`
-      - Make sure the script has execute permissions by running `chmod +x run_api.sh`.
-      - Run the scipt to run the container by typing `./run_api.sh 1313:80`, you will see the api server started, you can access the server document at `http://localhost:1313/docs`
-![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/85ef40ac-b938-48a6-ac2f-5849c982a01c)
+      - From the project directory, build the container with tag
+        ```console
+        $ docker build -t glm-fast-api:1.0 .
+        ```
+      - Make sure the script has execute permissions by running
+        ```console
+        $ chmod +x run_api.sh
+        ```
+      - Run the scipt to run the container by typing
+        ```console
+        $ ./run_api.sh 1313:80
+        ```
+        you will see the api server started, you can access the server document at `http://localhost:1313/docs`
+![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/d217a7e9-2994-4274-9325-840bcb33f42c)
+
 
 4. **Orchestration:**
    - Orchestration using Docker compose
-      - From the project directory, run `docker-compose up` and you will see the api server up and running like the previous image.
-      - Run `docker-compose down` to stop the service
+      - To run the docker compose, change directory to project directory, run
+        ```console
+        $ docker-compose up
+        ```
+      - To stop the service, run
+        ```
+        $ docker-compose down
+        ```
    - Orestration Using Kubernetes
       - Kubernetes deployment YAML (`kubernetes/deployment.yml`) defines how the FastAPI application should run as pods.
       - Kubernetes service YAML (`kubernetes/service.yml`) exposes the application within the cluster.
@@ -49,8 +77,8 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
       - Check list deployment runing `kubectl get deployments`
       - Check pod by runing `kubectl get pod`
       - Check services by running `kubectl get services`
-      - Here is a example of the output of the above commands, you can see we create 3 replica in the pod and we deploy them as load balancer to handle large amount of requests
-      - ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/740a0108-95a5-4829-98b6-10ce61bd10c2)
+      - Here is a example of the output of the above commands, you can see we create 3 replica in the pod and we deploy them as load balancer to handle large amount of requests![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/b044c916-bbfd-4095-b9a6-fd7d9634d50a)
+
 
 
 6. **GitLab CI/CD Pipeline:**
@@ -65,6 +93,13 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
    - Automated testing ensures code quality.
    - Docker image is built and pushed to the container registry.
    - Kubernetes deployment is updated with the new image.
+
+## Unit Test & Performance Test
+1. **Unit Test**
+   - pytest: change directory to test/pytest and run command `pytest`, it will run the `test_main.py` for unit test and `test_requests` for batch test
+2. **Performance Test**
+   - locust: change directory to test/locust and run command 'locust -f locust_test.py', it will open a server at `http://127.0.0.1:8089/`. You can specify the test load and it can output the performance test report.
+   - See detail documentation at `https://medium.com/@ashmi_banerjee/3-step-tutorial-to-performance-test-ml-serving-apis-using-locust-and-fastapi-40e6cc580adc`
 
 ## Notes
 
