@@ -21,11 +21,11 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
 $ git clone https://github.com/ZCai25/glm-fastapi-app.git
 ```
    
-3. Navigate to the project directory:
+2. Navigate to the project directory:
 ```console
 $ cd glm-fastapi-app
 ```
-5. Follow the instructions in each directory to deploy the GLM model locally or in a Kubernetes cluster.
+3. Follow the instructions in each directory to deploy the GLM model locally or in a Kubernetes cluster.
 
 ## End-to-End Process
 
