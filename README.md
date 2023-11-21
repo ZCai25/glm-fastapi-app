@@ -16,9 +16,16 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
 
 ## Getting Started
 
-1. Clone this repository: `git clone https://github.com/ZCai25/glm-fastapi-app.git`
-2. Navigate to the project directory: `cd glm-fastapi-app`
-3. Follow the instructions in each directory to deploy the GLM model locally or in a Kubernetes cluster.
+1. Clone this repository:
+```console
+$ git clone https://github.com/ZCai25/glm-fastapi-app.git
+```
+   
+3. Navigate to the project directory:
+```console
+$ cd glm-fastapi-app
+```
+5. Follow the instructions in each directory to deploy the GLM model locally or in a Kubernetes cluster.
 
 ## End-to-End Process
 
@@ -33,16 +40,32 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
 3. **Docker Containerization:**
    - The Dockerfile (`docker/Dockerfile`) specifies the environment and dependencies for running the FastAPI application.
    - Docker image is built using the `docker build` command, then you can build by running the `run_api.sh`
-      - From the project directory, build the container with tag `docker build -t glm-fast-api:1.0 .`
-      - Make sure the script has execute permissions by running `chmod +x run_api.sh`.
-      - Run the scipt to run the container by typing `./run_api.sh 1313:80`, you will see the api server started, you can access the server document at `http://localhost:1313/docs`
+      - From the project directory, build the container with tag
+        ```console
+        $ docker build -t glm-fast-api:1.0 .
+        ```
+      - Make sure the script has execute permissions by running
+        ```console
+        $ chmod +x run_api.sh
+        ```
+      - Run the scipt to run the container by typing
+        ```console
+        $ ./run_api.sh 1313:80
+        ```
+        you will see the api server started, you can access the server document at `http://localhost:1313/docs`
 ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/d217a7e9-2994-4274-9325-840bcb33f42c)
 
 
 4. **Orchestration:**
    - Orchestration using Docker compose
-      - From the project directory, run `docker-compose up` and you will see the api server up and running like the previous image.
-      - Run `docker-compose down` to stop the service
+      - To run the docker compose, change directory to project directory, run
+        ```console
+        $ docker-compose up
+        ```
+      - To stop the service, run
+        ```
+        $ docker-compose down
+        ```
    - Orestration Using Kubernetes
       - Kubernetes deployment YAML (`kubernetes/deployment.yml`) defines how the FastAPI application should run as pods.
       - Kubernetes service YAML (`kubernetes/service.yml`) exposes the application within the cluster.
