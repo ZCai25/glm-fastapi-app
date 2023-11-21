@@ -151,7 +151,7 @@ async def health_check():
     return {"status": "OK", "message": "Health check passed"}
 
 # API endpoint for batch or individual call predictionß
-@app.post("/predict", response_timeout=600)
+@app.post("/predict")
 async def predict_batch(data: InputDatas):
     try:
         batch_size = 1000 # Set your desired batch size
