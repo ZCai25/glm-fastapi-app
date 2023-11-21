@@ -104,7 +104,8 @@ $ cd glm-fastapi-app
         ```console
         $ kubectl get services
         ```
-      - Here is a example of the output of the above commands, you can see we create 3 replica in the pod and we deploy them as load balancer to handle large amount of requests ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/cd0981e3-e522-4d03-a4a3-5f3cb768d301), you can see that for each deployment, there are 3 replicas as load balancer, which we can test out the performance laster
+      - Here is a example of the output of the above commands, you can see we create 3 replica in the pod and we deploy them as load balancer to handle large amount of requests ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/cd0981e3-e522-4d03-a4a3-5f3cb768d301)
+      - You can see that for each deployment, there are 3 replicas as load balancer, which we can test out the performance laster
 
 
 
