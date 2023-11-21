@@ -58,7 +58,7 @@ $ cd glm-fastapi-app
    - The model is loaded during the FastAPI application startup.
 
 3. **Docker Containerization:**
-   - The Dockerfile (`docker/Dockerfile`) specifies the environment and dependencies for running the FastAPI application.
+   - The Dockerfile (`Dockerfile`) specifies the environment and dependencies for running the FastAPI application.
    - Docker image is built using the `docker build` command, then you can build by running the `run_api.sh`
       - From the project directory, build the container with a tag 1.0
         ```console
@@ -125,7 +125,7 @@ $ cd glm-fastapi-app
         ```console
         $ minikube service fast-service
         ```
-        then you can test the service from the pop-up windown.
+        then you can test the service from the pop-up window.
 
 
 
@@ -185,6 +185,6 @@ $ cd glm-fastapi-app
 
 ## Notes
 
-- Update configuration files (`docker/Dockerfile`, `kubernetes/deployment.yml`) based on your model and requirements.
+- Update configuration files (`Dockerfile`, `kubernetes/deployment.yml`) based on your model and requirements.
 - Adjust GitLab CI/CD settings and environment variables in the GitLab project.
 
