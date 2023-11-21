@@ -150,13 +150,11 @@ class InputDatas(BaseModel):
 async def health_check():
     return {"status": "OK", "message": "Health check passed"}
 
-# API endpoint for batch or individual call prediction
-
-
-@app.post("/predict")
+# API endpoint for batch or individual call predictionß
+@app.post("/predict", response_timeout=600)
 async def predict_batch(data: InputDatas):
     try:
-        batch_size = 1000  # Set your desired batch size
+        batch_size = 1000 # Set your desired batch size
 
         # Process data in batches
         predictions_list = []
@@ -193,7 +191,7 @@ async def predict_batch(data: InputDatas):
             "class_probability": predicted_proba.tolist(),
             "input_variables": selected_features,
             # Example binary classification threshold
-            "predicted_class": classified_predictions_list
+            "predicted_class": predictions_list
         }
 
         print(output_data)
