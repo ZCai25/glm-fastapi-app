@@ -17,6 +17,7 @@ current_script_dir = os.path.dirname(os.path.abspath(__file__))
 project_dir = os.path.abspath(os.path.join(current_script_dir, '../..'))
 sys.path.append(project_dir)
 
+# import data preprocessing modules
 from app.model.model_utils import transform_and_select_features, selected_features
 
 # Get the current script's directory
@@ -144,6 +145,11 @@ class InputDatas(BaseModel):
     data: list[Data]
 
 
+# Health check endpoint
+@app.get("/")
+async def health_check():
+    return {"status": "OK", "message": "Health check passed"}
+
 # API endpoint for prediction
 @app.post("/predict")
 async def predict_batch(data: InputDatas):
@@ -208,3 +214,5 @@ async def create_upload_file(file: UploadFile = File(...)):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
