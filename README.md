@@ -2,7 +2,9 @@
 
 ## Table of Content ## 
 [Overview and Project Goal](#over)<br>
-[Prerequisites](#pre)
+[Prerequisites](#pre)<br>
+[Project Structure](#pro)<br>
+
 <a name="over"></a>
 ## Overview and Project Goal
 The purpose of this project is to deploy a "segmentation" model for the marketing department. The outcome of the model prediction is whether a customer purchased a product(y=1) or not (y=0). By deploying this model, we can help the marketing department decide which customers receive an advertisement for the product.
@@ -17,6 +19,7 @@ Ensure the following tools are installed:
 - [Minikube](https://minikube.sigs.k8s.io/)
 - [GitLab CI/CD](https://docs.gitlab.com/ee/ci/)
 
+<a name="pro"></a>
 ## Project Structure
 
 - `app/`: Contains the FastAPI application code.
