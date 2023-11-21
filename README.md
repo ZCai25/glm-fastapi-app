@@ -185,7 +185,9 @@ $ cd glm-fastapi-app
    - Employ caching strategies (e.g., in-memory caching, CDN caching) to store frequently requested data and reduce response time
 5. Asynchronous Processing
    - Offload time-consuming tasks to background jobs or queues to ensure faster response times for critical API requests.
-   - Inside the app/main.py, we define the ```async def predict_batch(data: InputDatas):``` function, which implement asynchronous processing for slow process. We can run tests and identify slow processes for improving processing speed.
+   - Inside the `app/main.py`, we define the
+   ```async def predict_batch(data: InputDatas):```
+function, which implement asynchronous processing for slow process. We can run tests and identify slow processes for improving processing speed.
 6. Parallel Processing framework
    - Utilize big data framework like Spark to scale out, rewrite the deployment code to Pyspark code, read the model using Spark ML, create Spark df to preprocess the data, then output the predictions using Spark ML.
 7. Monitoring and Analytics
