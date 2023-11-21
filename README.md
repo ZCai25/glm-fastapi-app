@@ -163,7 +163,7 @@ $ cd glm-fastapi-app
      ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/6737ab74-6c2c-4a26-bca7-490acdb0fc75)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/913018c9-727f-41e9-a69c-65d3ef3ceb40)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/6f4d1321-2fef-493e-b844-ffe33dfe1d6b)
    - We can see that using 3 replicas balance the load for large amount of request there for total request per second is lower. When the number of request per sec increase to 100, single api port cannot process them and return error, while the 3 replicas and process them. This is a example of testing a api performance test.
   
-## Oppotunities to scale up 
+## Oppotunities for scalibility
 1. Using Scalable Architechture
    - Design a scalable architecture that can handle increased load. Consider microservices architecture, load balancing, and scalable databases, which we did in the kubenetes cluster
    - Use cloud services like [AWS Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/) to leverage auto-scaling features based on demand
@@ -177,12 +177,14 @@ $ cd glm-fastapi-app
 5. Asynchronous Processing
    - Offload time-consuming tasks to background jobs or queues to ensure faster response times for critical API requests.
    - Inside the app/main.py, we define the ```async def predict_batch(data: InputDatas):``` function, which implement asynchronous processing for slow process. We can test identify slow processes for improving processing speed.
-6. Monitoring and Analytics
+6. Parallel Processing framework
+   - Utilize Big data frame work like Spark to scale out, rewrite the deployment code to Pyspark code, read the model using Spark ML, create spark df to preprocess the data, then output the predictions.
+7. Monitoring and Analytics
    - Use monitoring tools to track API performance, identify bottlenecks, and troubleshoot issues in real-time. In the performance test section, we used locust to monitor the performance in real time.
    - If we are deploying to cloud services like AWS CloudWatch, we can monitor the performance of the FastAPI application deployed on AWS
+
 ## Notes
 
 - Update configuration files (`docker/Dockerfile`, `kubernetes/deployment.yml`) based on your model and requirements.
 - Adjust GitLab CI/CD settings and environment variables in the GitLab project.
 
-Feel free to explore the project directories for detailed instructions and customization options.
