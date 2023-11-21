@@ -11,6 +11,7 @@ This project demonstrates the deployment of a Generalized Linear Model (GLM) usi
 - `kubernetes/`: Includes Kubernetes deployment and service YAML files.
 - `tests/`: Holds unit tests for the FastAPI application.
 - `gitlab-ci.yml`: GitLab CI/CD pipeline configuration file.
+- `output/output_test.json`: prediction output of 10000 rows of test data
 - `README.md`: This documentation file.
 
 ## Getting Started
