@@ -36,12 +36,12 @@ $ cd glm-fastapi-app
      ```console
      $ uvicorn main:app --reload
      ```
-   - open `http://localhost:1313/docs` in a browser let us see the Fast API Swagger UI, which provide a interactive API documenation and exploration web user interfaces.
+   - open [FastAPI Swagger UI](http://localhost:1313/docs) in a browser, which provide a interactive API documenation and exploration web user interfaces.
    - Click "Try it out" at POST/predict and you can test out the model predictions by pasting the data to the request body or upload a file at POST/uploadfile. You can test the output without typing the curl command manually
    ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/5220d4e6-2386-4e29-9f71-47df2f951ae3)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/85414d90-f175-4260-abfd-1d15dd083370)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/d2b66cf2-c7eb-4a0d-9903-f61d7fda54f9)
 
 
-   - Check out the documenation at `https://fastapi.tiangolo.com/features/`
+   - Check out the documenation at [Swagger UI Docs](https://fastapi.tiangolo.com/features/)
 2. **Model Loading:**
    - The pre-trained GLM model is stored in the `model/` directory.
    - The model is loaded during the FastAPI application startup.
@@ -61,7 +61,7 @@ $ cd glm-fastapi-app
         ```console
         $ ./run_api.sh 1313:80
         ```
-        you will see the api server started, you can access the server document at `http://localhost:1313/docs`
+        you will see the api server started, you can access the server document at (http://localhost:1313/docs)
 ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/d217a7e9-2994-4274-9325-840bcb33f42c)
 
 
@@ -103,8 +103,8 @@ $ cd glm-fastapi-app
 1. **Unit Test**
    - pytest: change directory to test/pytest and run command `pytest`, it will run the `test_main.py` for unit test and `test_requests` for batch test
 2. **Performance Test**
-   - locust: change directory to test/locust and run command 'locust -f locust_test.py', it will open a server at `http://127.0.0.1:8089/`. You can specify the test load and it can output the performance test report.
-   - See detail documentation at `https://medium.com/@ashmi_banerjee/3-step-tutorial-to-performance-test-ml-serving-apis-using-locust-and-fastapi-40e6cc580adc`
+   - locust: change directory to test/locust and run command 'locust -f locust_test.py', it will open a server at (http://127.0.0.1:8089/). You can specify the test load and it can output the performance test report.
+   - See detail documentation at [this medium post](https://medium.com/@ashmi_banerjee/3-step-tutorial-to-performance-test-ml-serving-apis-using-locust-and-fastapi-40e6cc580adc)
    - Testing Result (see detail reports in the test/locust/report)
      - 10000 users with 10 users request per sec in 60 sec using single api port![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/4378d18b-fc86-4b19-8c32-b7f3f0c49438)
 ![total_requests_per_second_1313](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/759630a0-1a94-4c83-ac66-c2ce54adfb74)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/59527029-db71-4afa-811c-713ace346c17)
