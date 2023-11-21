@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: glm-fast-api:2.0
+    image: glm-fast-api:1.0
     container_name: fastapi-app-v2
     ports:
       - "1313:80"  # Adjust the port as needed
