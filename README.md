@@ -6,6 +6,9 @@
 [Project Structure](#pro)<br>
 [Getting Started](#get)<br>
 [End-to-End Process](#end)<br>
+[Unit Test & Performance Test](#unit)<br>
+[Opportunities For Scalability](#op)<br>
+[Notes](#note)<br>
 
 <a name="over"></a>
 ## Overview and Project Goal
@@ -164,6 +167,7 @@ $ cd glm-fastapi-app
    - Kubernetes deployment is updated with the new image.
 ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/7ebe2b60-18fd-46ba-8478-89f516ccf064)
 
+<a name="unit"></a>
 ## Unit Test & Performance Test
 1. **Unit Test**
    - pytest: change the directory to test/pytest and run the command
@@ -182,7 +186,8 @@ $ cd glm-fastapi-app
      - 10000 users with 10 user requests per sec in 60 sec using 3 API replicas
      ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/6737ab74-6c2c-4a26-bca7-490acdb0fc75)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/913018c9-727f-41e9-a69c-65d3ef3ceb40)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/6f4d1321-2fef-493e-b844-ffe33dfe1d6b)
    - We can see that using 3 replicas balance the load for large amounts of request there for total request per second is lower. However, when the number of request per sec increase to 100, a single api port cannot process them effectively and return error, while the 3 replicas and process them. This is an example of performing API performance test.
-  
+
+<a name="op"></a>
 ## Opportunities For Scalability
 1. Using Scalable Architecture
    - Design a scalable architecture that can handle increased load. Consider microservices architecture, load balancing, and scalable databases, which we did in the Kubenetes cluster
@@ -205,6 +210,7 @@ function, which implement asynchronous processing for slow process. We can run t
    - Use monitoring tools to track API performance, identify bottlenecks, and troubleshoot issues in real time. In the performance test section, we used locust to monitor the performance in real time.
    - If we are deploying to cloud services like AWS CloudWatch, we can monitor the performance of the FastAPI application deployed on AWS
 
+<a name="note"></a>
 ## Notes
 
 - Update configuration files (`Dockerfile`, `kubernetes/deployment.yml`) based on your model and requirements.
