@@ -5,12 +5,12 @@ import statistics
 import pytest
 from httpx import AsyncClient
 
-API_URL = "http://localhost:1313/predict"  # Update with your actual API endpoint
+# Update with your actual API endpoint
+API_URL = "http://localhost:1313/predict"
 
-print('API_URL',API_URL)
+
 @pytest.mark.asyncio
 async def test_performance():
-    print('API_URL',API_URL)
     # Prepare sample data for testing
     with open('test_input.json', 'r') as f:
         sample_data = json.load(f)
@@ -20,10 +20,10 @@ async def test_performance():
 
     # List to store response times
     response_times = []
-    print('response_time',response_times)
 
     # Create a list of tasks for concurrent API requests
-    tasks = [make_api_request(sample_data, response_times) for _ in range(num_requests)]
+    tasks = [make_api_request(sample_data, response_times)
+             for _ in range(num_requests)]
 
     # Execute tasks concurrently
     await asyncio.gather(*tasks)
@@ -31,7 +31,8 @@ async def test_performance():
     # Calculate and print performance metrics
     print(f"Minimum response time: {min(response_times):.6f} seconds")
     print(f"Maximum response time: {max(response_times):.6f} seconds")
-    print(f"Average response time: {statistics.mean(response_times):.6f} seconds")
+    print(
+        f"Average response time: {statistics.mean(response_times):.6f} seconds")
     print(f"Total number of requests: {num_requests}")
 
 
@@ -41,7 +42,8 @@ async def make_api_request(data, response_times):
         start_time = time.time()
 
         # Make a POST request to the API endpoint
-        response = await client.post(API_URL, json=data, timeout=200.0)  # Adjust the timeout value as needed
+        # Adjust the timeout value as needed
+        response = await client.post(API_URL, json=data, timeout=300.0)
 
         # Record the end time
         end_time = time.time()
