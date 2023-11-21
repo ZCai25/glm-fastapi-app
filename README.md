@@ -78,7 +78,7 @@ $ cd glm-fastapi-app
         ```
         $ docker-compose down
         ```
-   - Orestration Using Kubernetes
+   - Orchestration Using Kubernetes
       - Kubernetes deployment YAML (`kubernetes/deployment.yml`) defines how the FastAPI application should run as pods.
       - Kubernetes service YAML (`kubernetes/service.yml`) exposes the application within the cluster.
       - To start the orchestration process locally, start minikube by running
