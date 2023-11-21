@@ -32,6 +32,10 @@ $ cd glm-fastapi-app
 1. **FastAPI Application:**
    - The FastAPI application (`app/main.py`) defines API endpoints for model prediction.
    - Input data is received via HTTP requests and passed to the pre-trained GLM model.
+   - To start the FastAPI server locally, change directory to app and run
+     '''console
+     $ uvicorn main:app --reload
+     '''
 
 2. **Model Loading:**
    - The pre-trained GLM model is stored in the `model/` directory.
