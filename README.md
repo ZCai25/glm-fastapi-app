@@ -71,6 +71,9 @@ $ cd glm-fastapi-app
         ```console
         $ docker-compose up
         ```
+        It start building docker container using the image`glm-fastapi-app`and run at port 1313 and map to port 80 for the container
+     ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/f8d5739e-7631-4cde-88d7-f8b046fed69a)
+
       - To stop the service, run
         ```
         $ docker-compose down
@@ -78,10 +81,29 @@ $ cd glm-fastapi-app
    - Orestration Using Kubernetes
       - Kubernetes deployment YAML (`kubernetes/deployment.yml`) defines how the FastAPI application should run as pods.
       - Kubernetes service YAML (`kubernetes/service.yml`) exposes the application within the cluster.
-      - To start the orchestration process locally, start minikube by running `minikube start`
-      - Check list deployment runing `kubectl get deployments`
-      - Check pod by runing `kubectl get pod`
-      - Check services by running `kubectl get services`
+      - To start the orchestration process locally, start minikube by running
+        ```console
+        $ minikube start
+        ```
+        ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/98649748-9167-420b-b4f3-9df6ba92a3d8)
+      - To deploy the resources defined in your deployment.yaml and service.yaml files to a Kubernetes cluster, you can use the kubectl command-line tool. Here are the steps to deploy these resources:
+         - ```console
+           $ kubectl apply -f deployment.yaml
+           ```
+           This will create the deployment and start the specified number of replicas.
+
+      - Check list deployment running
+        ```console
+        $ kubectl get deployments
+        ```
+      - Check pod by running
+        ```console
+        $ kubectl get pod
+        ```
+      - Check services by running
+        ```console
+        $ kubectl get services
+        ```
       - Here is a example of the output of the above commands, you can see we create 3 replica in the pod and we deploy them as load balancer to handle large amount of requests![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/b044c916-bbfd-4095-b9a6-fd7d9634d50a)
 
 
@@ -101,7 +123,11 @@ $ cd glm-fastapi-app
 
 ## Unit Test & Performance Test
 1. **Unit Test**
-   - pytest: change directory to test/pytest and run command `pytest`, it will run the `test_main.py` for unit test and `test_requests` for batch test
+   - pytest: change directory to test/pytest and run command
+     ```console
+     $ pytest
+     ```
+     it will run the `test_main.py` for unit test and `test_requests` for batch test
 2. **Performance Test**
    - locust: change directory to test/locust and run command 'locust -f locust_test.py', it will open a server at (http://127.0.0.1:8089/). You can specify the test load and it can output the performance test report.
    - See detail documentation at [this medium post](https://medium.com/@ashmi_banerjee/3-step-tutorial-to-performance-test-ml-serving-apis-using-locust-and-fastapi-40e6cc580adc)
