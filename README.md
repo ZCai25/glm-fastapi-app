@@ -97,6 +97,10 @@ $ cd glm-fastapi-app
         $ minikube start
         ```
         ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/98649748-9167-420b-b4f3-9df6ba92a3d8)
+      - load the image to Minikube by running  
+        ```console 
+        $ minikube image load glm-fast-api:1.0
+        ```
       - To deploy the resources defined in your deployment.yaml file to a Kubernetes cluster, you can use the kubectl command-line tool. Here are the steps to deploy these resources:
            ```console
            $ kubectl apply -f deployment.yaml
