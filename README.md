@@ -4,23 +4,24 @@
 [Overview and Project Goal](#over)<br>
 [Prerequisites](#pre)<br>
 [Project Structure](#pro)<br>
+[Getting Started](#get)<br>
 
-
-## Overview and Project Goal<a name="over"></a>
+<a name="over"></a>
+## Overview and Project Goal
 The purpose of this project is to deploy a "segmentation" model for the marketing department. The outcome of the model prediction is whether a customer purchased a product(y=1) or not (y=0). By deploying this model, we can help the marketing department decide which customers receive an advertisement for the product.
 
 This project demonstrates the deployment of a Generalized Linear Model (GLM) using the FastAPI framework, Docker containers, Kubernetes orchestration, and GitLab for Continuous Integration/Continuous Deployment (CI/CD). The GLM model serves as a web API, providing predictions based on input data. In the end, we also discuss the performance testing to identify bottlenecks, and various options to overcome it.
 
-
-## Prerequisites<a name="pre"></a>
+<a name="pre"></a>
+## Prerequisites
 Ensure the following tools are installed:
 - [Docker](https://www.docker.com/)
 - [Kubernetes](https://kubernetes.io/)
 - [Minikube](https://minikube.sigs.k8s.io/)
 - [GitLab CI/CD](https://docs.gitlab.com/ee/ci/)
 
-
-## Project Structure<a name="pro"></a>
+<a name="pro"></a>
+## Project Structure
 
 - `app/`: Contains the FastAPI application code.
 - `app/model/`: Holds the pre-trained GLM model (pickle file).
@@ -30,6 +31,7 @@ Ensure the following tools are installed:
 - `output/output_test.json`: prediction output of 10000 rows of test data
 - `README.md`: This documentation file.
 
+<a name="get"></a>
 ## Getting Started
 
 1. Clone this repository:
