@@ -67,7 +67,7 @@ $ cd glm-fastapi-app
      ```console
      $ uvicorn main:app --reload
      ```
-   - open [FastAPI Swagger UI](http://localhost:1313/docs) in a browser, which provides interactive API documentation and exploration of web user interfaces.
+   - Open [FastAPI Swagger UI](http://localhost:1313/docs) in a browser, which provides interactive API documentation and exploration of web user interfaces.
    - Click "Try it out" at POST/predict and you can test out the model predictions by copying the data from test/test_output.json and pasting the data to the request body, or uploading a file at POST/uploadfile. You can test the output without typing the curl command manually
    ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/5220d4e6-2386-4e29-9f71-47df2f951ae3)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/85414d90-f175-4260-abfd-1d15dd083370)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/d2b66cf2-c7eb-4a0d-9903-f61d7fda54f9)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/a6060d12-21e0-457b-9d86-93ece07015a1)
 
