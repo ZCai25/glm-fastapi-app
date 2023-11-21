@@ -162,7 +162,7 @@ $ cd glm-fastapi-app
      it will run the `test_main.py` for unit test and `test_requests` for batch test
 2. **Performance Test**
    - locust: change directory to test/locust and run command 'locust -f locust_test.py', it will open a server at (http://127.0.0.1:8089/). You can specify the test load and it can output the performance test report. See detailed documentation at [this medium post](https://medium.com/@ashmi_banerjee/3-step-tutorial-to-performance-test-ml-serving-apis-using-locust-and-fastapi-40e6cc580adc)
-   - Testing Result (see detailed reports in the test/locust/report)
+   - Testing Result (see detailed reports in the `test/locust/report`)
      - 10000 users with 10 user requests per sec in 60 sec using a single API port![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/4378d18b-fc86-4b19-8c32-b7f3f0c49438)
 ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/d5c91730-77e2-477b-82cc-80aa40f6899f)
 ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/cb9f21ad-acd2-42ea-b0b6-31f0a05f873d)
