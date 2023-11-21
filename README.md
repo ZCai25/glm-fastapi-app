@@ -159,7 +159,7 @@ $ cd glm-fastapi-app
      ```console
      $ pytest
      ```
-     it will run the `test_main.py` for unit test and `test_requests` for batch test
+     it will run the `test_main.py` for unit test and `test_requests` for batch test (**make sure the container is up and running**)
 2. **Performance Test**
    - locust: change directory to test/locust and run command 'locust -f locust_test.py', it will open a server at (http://127.0.0.1:8089/). You can specify the test load and it can output the performance test report. See detailed documentation at [this medium post](https://medium.com/@ashmi_banerjee/3-step-tutorial-to-performance-test-ml-serving-apis-using-locust-and-fastapi-40e6cc580adc)
    - Testing Result (see detailed reports in the `test/locust/report`)
