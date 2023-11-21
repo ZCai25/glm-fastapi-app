@@ -36,7 +36,12 @@ $ cd glm-fastapi-app
      ```console
      $ uvicorn main:app --reload
      ```
+   - open `http://localhost:1313/docs` in a browser let us see the Fast API Swagger UI, which provide a interactive API documenation and exploration web user interfaces.
+   - Click "Try it out" at POST/predict and you can test out the model predictions by pasting the data to the request body or upload a file at POST/uploadfile. You can test the output without typing the curl command manually
+   ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/5220d4e6-2386-4e29-9f71-47df2f951ae3)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/85414d90-f175-4260-abfd-1d15dd083370)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/d2b66cf2-c7eb-4a0d-9903-f61d7fda54f9)
 
+
+   - Check out the documenation at `https://fastapi.tiangolo.com/features/`
 2. **Model Loading:**
    - The pre-trained GLM model is stored in the `model/` directory.
    - The model is loaded during the FastAPI application startup.
@@ -106,7 +111,9 @@ $ cd glm-fastapi-app
 
      - 10000 users with 10 users request per sec in 60 sec using 3 api replicas
      ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/6737ab74-6c2c-4a26-bca7-490acdb0fc75)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/913018c9-727f-41e9-a69c-65d3ef3ceb40)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/6f4d1321-2fef-493e-b844-ffe33dfe1d6b)
-   - We can see that using 3 replicas balance the load for large amount of request there for total request per second is lower
+   - We can see that using 3 replicas balance the load for large amount of request there for total request per second is lower. When the number of request per sec increase to 100, single api port cannot process them and return error, while the 3 replicas and process them. This is a example of testing a api performance test.
+  
+## 
 
 ## Notes
 
