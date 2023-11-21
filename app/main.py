@@ -33,7 +33,7 @@ with open(model_file_path, 'rb') as file:
 # Define FastAPI app
 app = FastAPI()
 
-
+# Defind data classes
 class Data(BaseModel):
     x0: Optional[float]
     x1: Optional[float]
@@ -150,7 +150,9 @@ class InputDatas(BaseModel):
 async def health_check():
     return {"status": "OK", "message": "Health check passed"}
 
-# API endpoint for prediction
+# API endpoint for batch or individual call prediction
+
+
 @app.post("/predict")
 async def predict_batch(data: InputDatas):
     try:
@@ -158,7 +160,6 @@ async def predict_batch(data: InputDatas):
 
         # Process data in batches
         predictions_list = []
-        print('datatype', type(data))
         for start in range(0, len(data.data), batch_size):
             end = start + batch_size
             batch_data = data.data[start:end]
@@ -170,16 +171,19 @@ async def predict_batch(data: InputDatas):
             transformed_data = transform_and_select_features(batch_df)
 
             # Create a DataFrame with all values set to 0 for selected features
-            zero_df = pd.DataFrame(0, index=transformed_data.index, columns=list(selected_features))
+            zero_df = pd.DataFrame(
+                0, index=transformed_data.index, columns=list(selected_features))
 
             # Update the values from the original df for columns that exist in both selected_features and df
-            common_features = list(set(selected_features).intersection(transformed_data.columns))
+            common_features = list(
+                set(selected_features).intersection(transformed_data.columns))
             zero_df.update(transformed_data[common_features])
 
             # Make predictions using the pre-trained model on the zero_df
             threshold = 0.75
             predicted_proba = model.predict(zero_df)
-            classified_predictions_list = (predicted_proba > threshold).astype(int).tolist()
+            classified_predictions_list = (
+                predicted_proba > threshold).astype(int).tolist()
 
             # Append predictions to the list
             predictions_list.extend(classified_predictions_list)
@@ -188,14 +192,17 @@ async def predict_batch(data: InputDatas):
         output_data = {
             "class_probability": predicted_proba.tolist(),
             "input_variables": selected_features,
-            "predicted_class": classified_predictions_list  # Example binary classification threshold
+            # Example binary classification threshold
+            "predicted_class": classified_predictions_list
         }
+
         print(output_data)
 
         return output_data
 
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"prediction error: {str(e)}")
+        raise HTTPException(
+            status_code=500, detail=f"prediction error: {str(e)}")
 
 
 # API endpoint for uploading a JSON file
@@ -214,5 +221,3 @@ async def create_upload_file(file: UploadFile = File(...)):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-
