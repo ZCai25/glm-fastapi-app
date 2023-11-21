@@ -87,7 +87,7 @@ $ cd glm-fastapi-app
         ```
         ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/98649748-9167-420b-b4f3-9df6ba92a3d8)
       - To deploy the resources defined in your deployment.yaml file to a Kubernetes cluster, you can use the kubectl command-line tool. Here are the steps to deploy these resources:
-        ```console
+           ```console
            $ kubectl apply -f deployment.yaml
            ```
            This will create the deployment and start the specified number of replicas.
