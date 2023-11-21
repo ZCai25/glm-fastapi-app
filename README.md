@@ -6,6 +6,12 @@ The purpose of this project is to deploy a "segmentation" model for the marketin
 This project demonstrates the deployment of a Generalized Linear Model (GLM) using the FastAPI framework, Docker containers, Kubernetes orchestration, and GitLab for Continuous Integration/Continuous Deployment (CI/CD). The GLM model is served as a web API, providing predictions based on input data. In the end, we also discuss the performance testing to identify bottleneck, and various options to outcome it.
 
 
+## Prerequisites
+Ensure the following tools are installed:
+- [Docker](https://www.docker.com/)
+- [Kubernetes](https://kubernetes.io/)
+- [Minikube](https://minikube.sigs.k8s.io/)
+- [GitLab CI/CD](https://docs.gitlab.com/ee/ci/)
 
 ## Project Structure
 
