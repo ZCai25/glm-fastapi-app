@@ -170,9 +170,9 @@ $ cd glm-fastapi-app
 <a name="unit"></a>
 ## Unit Test & Performance Test
 1. **Unit Test**
-   - pytest: change the directory to test/pytest and run the command (-rx to see the print result of API performance statistics)
+   - pytest: change the directory to test/pytest and run the command (-s to see the print result of API performance statistics)
      ```console
-     $ pytest -rx
+     $ pytest -s
      ```
      it will run the `test_main.py` for unit test and `test_requests` for batch test (**make sure the container is up and running**)
 2. **Performance Test**
