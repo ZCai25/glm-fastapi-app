@@ -185,7 +185,7 @@ $ cd glm-fastapi-app
 
      - 10000 users with 10 user requests per sec in 60 sec using 3 API replicas
      ![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/6737ab74-6c2c-4a26-bca7-490acdb0fc75)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/913018c9-727f-41e9-a69c-65d3ef3ceb40)![image](https://github.com/ZCai25/glm-fastapi-app/assets/108997562/6f4d1321-2fef-493e-b844-ffe33dfe1d6b)
-   - We can see that using 3 replicas balance the load for large amounts of request there for total request per second is lower. However, when the number of request per sec increase to 100, a single api port cannot process them effectively and return error, while the 3 replicas and process them. This is an example of performing API performance test.
+   - We can see that using 3 replicas balance the load for large amounts of requests so total request per second is lower. However, when the number of request per sec increase to 100, a single api port cannot process them effectively and return error, while the 3 replicas  process them with fault tolernce. This is an example of performing API performance test.
 
 <a name="op"></a>
 ## Opportunities For Scalability
