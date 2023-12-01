@@ -23,6 +23,7 @@ Ensure the following tools are installed:
 - [Kubernetes](https://kubernetes.io/)
 - [Minikube](https://minikube.sigs.k8s.io/)
 - [GitLab CI/CD](https://docs.gitlab.com/ee/ci/)
+- Python Version: 3.10.0
 
 <a name="pro"></a>
 ## Project Structure
